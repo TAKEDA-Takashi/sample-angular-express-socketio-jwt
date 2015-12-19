@@ -1,6 +1,10 @@
 class MainController
-  constructor: (@$localStorage) ->
+  constructor: (@$localStorage, @socket) ->
     console.log @$localStorage.user
+
+  ping: ->
+    @socket.emit "ping", "test!!", (data) ->
+      console.log data
 
 
 angular.module "front"
