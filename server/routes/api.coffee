@@ -14,7 +14,7 @@ router.post "/authenticate", (req, res, next) ->
     token = jwt.sign user, config.secret, expiresIn: "2h"
     user.token = token
 
-    res.jsonp(user)
+    res.json(user)
   else
     res.sendStatus 401
 
