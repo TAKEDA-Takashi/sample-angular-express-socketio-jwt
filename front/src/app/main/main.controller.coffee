@@ -1,5 +1,5 @@
 class MainController
-  constructor: (@$localStorage, @$state, $scope, @socket) ->
+  constructor: (@User, @socket, @$state, $scope) ->
     $scope.$on "$destroy", => @socket.removeAllListeners()
 
   ping: ->
@@ -7,7 +7,7 @@ class MainController
       console.log data
 
   logout: ->
-    delete @$localStorage.user
+    @User.discard()
     @$state.go "login"
 
 angular.module "front"
