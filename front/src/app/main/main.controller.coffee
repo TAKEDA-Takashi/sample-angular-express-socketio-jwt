@@ -1,6 +1,8 @@
 class MainController
   constructor: (@User, @socket, @$state, $scope) ->
-    $scope.$on "$destroy", => @socket.removeAllListeners()
+    $scope.$on "$destroy", =>
+      @socket.disconnect()
+      @socket.removeAllListeners()
 
   ping: ->
     @socket.emit "ping", "test!!", (data) ->
